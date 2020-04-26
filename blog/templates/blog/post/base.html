@@ -1,0 +1,127 @@
+
+{% load blog_tags %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Mobile Specific Meta -->	
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Favicon-->
+		<!-- Author Meta -->
+	<meta name="author" content="colorlib">
+	<!-- Meta Description -->
+	<meta name="description" content="blog site">
+	<!-- Meta Keyword -->
+	<meta name="keywords" content="">
+	<!-- meta character set -->
+	<meta charset="UTF-8">
+	<!-- Site Title -->
+	
+	
+		<title> {% block title %} Blog {% endblock %}</title>
+	
+		
+	
+
+	<!-- Glyphicons css -->  
+	<!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> -->
+	
+    <!-- <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700|Roboto:400,400i,500" rel="stylesheet"> -->
+    <!-- StyleSheets -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="{% static 'blog/css/blog.css' %}">
+    
+    </head>
+
+    <body>
+
+    {% block body %}
+
+         <div class="container-fluid">
+        <div class="row">
+        <!-- Search Section -->
+            <div class="col-lg-3"> </div>
+        <!-- End Search Section -->
+
+
+        {% block content %}
+            
+        {% endblock content %}
+          
+
+         <!-- Right Section -->
+            <div class="col-lg-3"><br>
+                  <div class="card">
+                  <div class="card-header bg-info text-white">
+                <h3 align="center">My Blog</h3>
+                  </div>
+                  <p style="font-size: 20px;" align="center">I have written {% total_posts %} blogs so far. </p><br>
+                   <p align="center"><a href="{% url 'blog:post_feed' %}" style="color: #3498DB">Subscribe to my RSS feed</a></p>
+                  </div>
+                <br><br>
+
+            <!-- Latest Posts -->
+                <div class="card">
+                  <div class="card-header bg-info text-white">
+                  <h3 align="center">Latest posts</h3>
+                  </div>
+                    <div class="card-body">
+                  {% show_latest_post 3 %}<br>
+                    </div>
+                  </div>
+                <br><br>
+
+                <!-- Most Commented Posts -->
+                 <div class="card">
+                  <div class="card-header bg-info text-white">
+                  <h3 align="center">Most Commented posts</h3>
+                  </div>
+                  {% get_most_commented_posts as most_commented_posts %}
+                 <div class="card-body">
+                  <ul>
+                  {% for post in most_commented_posts %}
+                  <li>
+                      <a href="{{ post.get_absolute_url }}" style="color: #3498DB">{{ post.title }}</a><br>
+                  </li>
+                      <br>
+                      {% endfor %}
+               </ul>
+                 </div>
+                 </div>
+
+               </div>
+
+{#                # hello#}
+{#              <div class="jumbotron" style="width: 500px; height: 600px;">#}
+{#                <h3>My Blog</h3>#}
+{#                  <h4>I have written {% total_posts %} blogs so far. </h4><br>#}
+{#                   <p><a href="{% url 'blog:post_feed' %}" style="color: #3498DB">Subscribe to my RSS feed</a></p>#}
+{#                  <h3 style="font-weight: bold">Latest posts</h3>#}
+{#                  {% show_latest_post 3 %}<br>#}
+{#                  <h3 style="font-weight: bold">Most Commented posts</h3>#}
+{#                  {% get_most_commented_posts as most_commented_posts %}#}
+{#                  <ul>#}
+{#                  {% for post in most_commented_posts %}#}
+{#                  <li>#}
+{#                      <a href="{{ post.get_absolute_url }}" style="color: #3498DB">{{ post.title }}</a>#}
+{#                  </li>#}
+{#                      {% endfor %}#}
+{#               </ul>#}
+{#               </div>#}
+            </div>
+        </div>
+    </div>
+
+    {% endblock body %}
+	 
+    </body>
+
+    <!-- JavaScripts -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+
+</html>

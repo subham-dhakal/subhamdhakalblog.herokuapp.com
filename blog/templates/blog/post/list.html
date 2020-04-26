@@ -1,0 +1,124 @@
+{% extends 'blog/post/base.html' %}
+{% load blog_tags %}
+{% load static %}
+
+
+{% block title %} My Blog {% endblock %}
+
+
+
+{#<header class="masthead">#}
+{#    <div class="overlay"></div>#}
+{#    <div class="container">#}
+{#      <div class="row">#}
+{#        <div class="col-lg-8 col-md-10 mx-auto">#}
+{#          <div class="site-heading" style="padding: 200px 20px 20px 180px;">#}
+{#            <div class="overlay"></div>#}
+{#            <h1> My Blog </h1>#}
+{#            <span class="subheading"> </span>#}
+{#          </div>#}
+{#        </div>#}
+{#      </div>#}
+{#    </div>#}
+{#  </header>#}
+
+
+
+
+{#    <div class="container-fluid">#}
+{#        <div class="row">#}
+{#            <div class="col-lg-3"></div>#}
+
+        {% block content %}
+            <div class="col-lg-6">
+            {% if tag %}
+            <h1>Posts tagged with "{{ tag.name }}" </h1><br><br>
+            {% endif %}
+                {% for post in posts %}
+                <h2><a href="{{ post.get_absolute_url }}">{{post.title}}</a></h2>
+                    <p class="tags">
+                        Tags :
+                       {% for tag in post.tags.all %}
+                           <a href="{% url 'blog:post_list_by_tag' tag.slug %}" style="color: #3498DB">{{ tag.name }}</a>
+                           {% if not forloop.last %} , {% endif %}
+                           {% endfor %}
+                    </p>
+                     <p class="text-muted">Posted by {{post.author}} on {{post.publish}}</p>
+                      {{post.body|markdown|truncatewords_html:30}}<br><br>
+                        {% endfor %}
+                       <!-- Pagination template for FBV-->
+                    {% include 'blog/pagination.html' with page=posts %}
+                        <!-- Pagination template for CBV-->
+{#                        {% include 'blog/pagination.html' with page=page_obj %}#}
+                 </div>
+        {% endblock content %}
+
+        <!-- Right Section -->
+{#            <div class="col-lg-3"><br>#}
+{#                  <div class="card">#}
+{#                  <div class="card-header bg-info text-white">#}
+{#                <h3 align="center">My Blog</h3>#}
+{#                  </div>#}
+{#                  <p style="font-size: 20px;" align="center">I have written {% total_posts %} blogs so far. </p><br>#}
+{#                   <p align="center"><a href="{% url 'blog:post_feed' %}" style="color: #3498DB">Subscribe to my RSS feed</a></p>#}
+{#                  </div>#}
+{#                <br><br>#}
+
+            <!-- Latest Posts -->
+{#                <div class="card">#}
+{#                  <div class="card-header bg-info text-white">#}
+{#                  <h3 align="center">Latest posts</h3>#}
+{#                  </div>#}
+{#                    <div class="card-body">#}
+{#                  {% show_latest_post 3 %}<br>#}
+{#                    </div>#}
+{#                  </div>#}
+{#                <br><br>#}
+
+                <!-- Most Commented Posts -->
+{#                 <div class="card">#}
+{#                  <div class="card-header bg-info text-white">#}
+{#                  <h3 align="center">Most Commented posts</h3>#}
+{#                  </div>#}
+{#                  {% get_most_commented_posts as most_commented_posts %}#}
+{#                 <div class="card-body">#}
+{#                  <ul>#}
+{#                  {% for post in most_commented_posts %}#}
+{#                  <li>#}
+{#                      <a href="{{ post.get_absolute_url }}" style="color: #3498DB">{{ post.title }}</a><br>#}
+{#                  </li>#}
+{#                      <br>#}
+{#                      {% endfor %}#}
+{#               </ul>#}
+{#                 </div>#}
+{#                 </div>#}
+{##}
+{#               </div>#}
+
+{#                # hello#}
+{#              <div class="jumbotron" style="width: 500px; height: 600px;">#}
+{#                <h3>My Blog</h3>#}
+{#                  <h4>I have written {% total_posts %} blogs so far. </h4><br>#}
+{#                   <p><a href="{% url 'blog:post_feed' %}" style="color: #3498DB">Subscribe to my RSS feed</a></p>#}
+{#                  <h3 style="font-weight: bold">Latest posts</h3>#}
+{#                  {% show_latest_post 3 %}<br>#}
+{#                  <h3 style="font-weight: bold">Most Commented posts</h3>#}
+{#                  {% get_most_commented_posts as most_commented_posts %}#}
+{#                  <ul>#}
+{#                  {% for post in most_commented_posts %}#}
+{#                  <li>#}
+{#                      <a href="{{ post.get_absolute_url }}" style="color: #3498DB">{{ post.title }}</a>#}
+{#                  </li>#}
+{#                      {% endfor %}#}
+{#               </ul>#}
+{#               </div>#}
+
+
+
+{#            </div>#}
+        </div>
+    </div>
+
+
+
+    

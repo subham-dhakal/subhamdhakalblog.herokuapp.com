@@ -1,0 +1,55 @@
+{% extends 'blog/post/base.html' %}
+{% load blog_tags %}
+{% block title %} {{post.title }} {% endblock %}
+
+{% block content %}
+<br>
+{#    <div class="container">#}
+{#         <div class="row">#}
+{#        <div class="col-lg-1"></div>#}
+
+        <div class="col-lg-6">
+          <h2>{{post.title}}</h2>
+        <p class="text-muted">Posted by {{post.author}} on {{post.publish}}</p>
+           <hr>
+           <h4> {{post.body|markdown}}</h4>
+            <p><a href="{% url "blog:post_share" post.id %}" class="btn-lg btn-info">Share this post</a></p><br>
+            <br>
+            {% for comment in comments %}
+            <div class="panel panel-default">
+            <div class="panel-heading">
+         <strong>{{ comment.name }}</strong> <span class="text-muted">commented on {{ comment.created }}</span>
+         </div>
+            <div class="panel-body">
+         <h4>{{ comment.body|linebreaks }}</h4><br>
+                <hr>
+            </div><!-- /panel-body -->
+            </div>
+
+            {% empty %}
+                <p>There are no comments yet.</p>
+            {% endfor %}
+         <!-- /panel panel-default -->
+{#            </div>#}
+{#            </div>#}
+            <br>
+            <h3>Leave a Comment</h3>
+            <form method="post">
+                {% csrf_token %}
+                {{ comment_form.as_p }}<br>
+                <input type="submit" class="btn-sm btn-success" value="Add Comment"><br>
+            </form>
+
+            </div>
+
+{#         <div class="col-lg-3">#}
+{#              <div class="jumbotron" style="width: 500px; height: 500px;">#}
+{#                <h2>My Blog</h2>#}
+{#                  <h4>I have written {% total_posts %} blogs so far.</h4>#}
+{#               </div>#}
+{#            </div>#}
+{#         </div>#}
+{#        </div>#}
+
+{% endblock content %}
+    

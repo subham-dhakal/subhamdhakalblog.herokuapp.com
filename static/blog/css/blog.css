@@ -1,0 +1,83 @@
+.masthead{
+    background-image: url('/static/blog/images/home-bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    width: 100%;
+    min-height: 420px;
+    z-index: 1;
+
+}
+
+/* 
+.site-heading{
+    color: #25CCF7;
+} */
+
+h2{
+    font-size: 36;
+    font-weight:800 ;
+    color: #2F363F;
+}
+
+.site-heading h1{
+    font-weight: 800;
+    font-size: 80px;
+    color: #2F363F;
+}
+
+.site-heading .subheading{
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 1.1;
+    display: block;
+    margin: 10px 0 0;
+    color: #2F363F;
+}
+a{
+    color: #535C68;
+}
+
+a:hover{
+    color: #0085a1;
+}
+
+.panel-body{
+
+}
+
+/*.comment h3{*/
+/*    background: darkgray;*/
+/*}*/
+
+/*    for comments css         */
+
+
+/*.thumbnail {*/
+/*    padding:0px;*/
+/*}*/
+/*.panel {*/
+/*	position:relative;*/
+/*}*/
+/*.panel>.panel-heading:after,.panel>.panel-heading:before{*/
+/*	position:absolute;*/
+/*	top:11px;left:-16px;*/
+/*	right:100%;*/
+/*	width:0;*/
+/*	height:0;*/
+/*	display:block;*/
+/*	content:" ";*/
+/*	border-color:transparent;*/
+/*	border-style:solid solid outset;*/
+/*	pointer-events:none;*/
+/*}*/
+/*.panel>.panel-heading:after{*/
+/*	border-width:7px;*/
+/*	border-right-color:#f7f7f7;*/
+/*	margin-top:1px;*/
+/*	margin-left:2px;*/
+/*}*/
+/*.panel>.panel-heading:before{*/
+/*	border-right-color:#ddd;*/
+/*	border-width:8px;*/
+/*}*/

@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['cool-blog-django.herokuapp.com']
+ALLOWED_HOSTS = ['cool-blog-django.herokuapp.com','127.0.0.1']
 
 
 # Email Config

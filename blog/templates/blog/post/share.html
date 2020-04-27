@@ -3,8 +3,8 @@
 {% block title %}Share a post{% endblock %}
 {% block body %}
     {% if sent %}
-        <h1>E-mail successfully sent</h1>
-        <h2>"{{ post.title }}" was successfully sent to {{ form.cleaned_data.to }}.
+        <h1 align="center">E-mail successfully sent</h1>
+        <h3 align="center">"{{ post.title }}" was successfully sent to {{ form.cleaned_data.to }}.
         </h2>
     {% else %}
         <h3 align="center">Share "{{ post.title }}" by e-mail</h3><br>

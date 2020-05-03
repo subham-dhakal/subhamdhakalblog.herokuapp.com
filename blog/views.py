@@ -59,7 +59,10 @@ def post_detail(request, year, month, day, post):
             new_comment.post = post
             # save comment to the database
             new_comment.save()
-            # return redirect('blog:post_detail')
+            # saving the post url for redirecting after user comments
+            url = post.get_absolute_url()
+            # redirecting to the detail page. To avoid the form being filled after commenting. It does GET request 
+            return redirect(url)
 
     else:
         comment_form = CommentForm()

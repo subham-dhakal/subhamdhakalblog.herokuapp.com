@@ -13,7 +13,7 @@
             {% endwith %}
         </h3><br>
         {% for post in results %}
-            <h4><a href="{{ post.get_absolute_url }}"style="color: #3498DB">{{ post.title }}</a></h4>
+            <h4><a href="{{ post.get_absolute_url }}" style="color: #3498DB">{{ post.title }}</a></h4>
             {{ post.body|truncatewords:20 }}
         {% empty %}
             <p>There are no results for your query.</p>
